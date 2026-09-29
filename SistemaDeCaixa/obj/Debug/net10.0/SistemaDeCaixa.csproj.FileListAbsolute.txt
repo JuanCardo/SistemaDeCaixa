@@ -1,0 +1,4 @@
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.AssemblyInfoInputs.cache
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.AssemblyInfo.cs
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.csproj.CoreCompileInputs.cache
