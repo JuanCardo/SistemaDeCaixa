@@ -10,17 +10,19 @@
             List<string> produtos = new();
             List<decimal> precos = new();
             List<int> qtdProdutos = new();
+            List<int> codigos = new();
 
             do
             {
                 ExibirMenu();
                 Console.Write("ESCOLHA UM DIGITO: ");
                 menu = int.Parse(Console.ReadLine());
+          
                 Console.Clear();
                 switch (menu)
                 {
                     case 1:
-                        CadastrarProdutos(produtos, precos, qtdProdutos);
+                        CadastrarProdutos(codigos, produtos, precos, qtdProdutos);
                         Console.Clear();
                         ; break;
                     case 2:
@@ -29,13 +31,18 @@
 
                     // COMPRA
                     case 3:
-                        ComprarProdutos(produtos, precos, qtdProdutos);
+                        carrinho = ComprarProdutos(carrinho, codigos, produtos, precos, qtdProdutos);
                         ; break;
 
                     // FINALIZAR COMPRA
                     case 4:
                         Console.WriteLine($"TOTAL DA COMPRA: {carrinho}");
-                        ; break;
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        Console.WriteLine("VALOR INVALIDO !!!");
+                        break;
                 }
             } while (menu < 5);
         }
@@ -53,8 +60,10 @@
             Console.WriteLine();
         }
 
-        public static void CadastrarProdutos(List<string> produtos, List<decimal> precos, List<int> qtdProdutos)
+        public static void CadastrarProdutos(List<int> codigos, List<string> produtos, List<decimal> precos, List<int> qtdProdutos)
         {
+            Console.Write("CODIGO DO PRODUTO: ");
+            codigos.Add(int.Parse(Console.ReadLine()));
             Console.Write("PRODUTO: ");
             produtos.Add(Console.ReadLine().ToLower());
             Console.Write("PREÇO: ");
@@ -65,21 +74,8 @@
 
         public static void ConsultarProdutos(List<string> produtos, List<decimal> precos, List<int> qtdProdutos)
         {
-            bool validar = false;
-            while (!validar)
-            { }
-
             Console.Write("DIGITE O PRODUTO: ");
             string? buscar = Console.ReadLine().ToLower();
-            if (string.TryParse(Console.ReadLine().ToLower(), out string? buscar))
-            {
-                validar = true;
-            }
-            else
-            {
-                validar = false;
-            }
-
 
             int tamanho = produtos.Count; // tamanho da lista
 
@@ -91,7 +87,7 @@
                 }
                 Console.WriteLine("");
             }
-            else
+            else if (buscar != null)
             {
                 for (int i = 0; i < tamanho; i++)
                 {
@@ -100,83 +96,77 @@
                         Console.WriteLine($"PRODUTO: {produtos[i]} | PREÇO: {precos[i]} | QUANTIDADE EM ESTOQUE: {qtdProdutos[i]}");
                         Console.WriteLine("DESEJA CONSULTAR OUTRO PRODUTO?");
                         Console.Write("(S)SIM (N)NÃO => ");
-                        string? escolha = Console.ReadLine().ToLower();
-                        if (escolha == "s")
+                        char? escolha = char.Parse(Console.ReadLine().ToLower());
+                        if (escolha == 's')
                         {
                             Console.Clear();
                             ConsultarProdutos(produtos, precos, qtdProdutos);
                         }
-                        else if (escolha == "n")
+                        else if (escolha == 'n')
                         {
                             Console.Clear();
-                            ExibirMenu();
+                            break;
                         }
                         else
                         {
                             Console.WriteLine("OPÇÃO INVÁLIDA!!!");
                             Console.ReadKey();
                             Console.Clear();
-                            i = -1;
-                            continue;
                         }
                     }
+                    else
+                    {
+                        Console.WriteLine("PRODUTO NÃO CADASTRADO!!!");
+                        ConsultarProdutos(produtos, precos, qtdProdutos);
+                    }
+
                 }
-            }
-            if (buscar != null && buscar != "todos")
-            {
-                Console.WriteLine("PRODUTO NÃO CADASTRADO!!!");
-                ConsultarProdutos(produtos, precos, qtdProdutos);
             }
         }
 
-        public static void ComprarProdutos(List<string> produtos, List<decimal> precos, List<int> qtdProdutos)
+        public static decimal ComprarProdutos(decimal carrinho, List<int> codigos, List<string> produtos, List<decimal> precos, List<int> qtdProdutos)
         {
-            foreach (var produto in produtos)
+            for (int i = 0; i < produtos.Count; i++)
             {
-                Console.WriteLine($"PRODUTO: {produto}| PREÇO: {precos[count]}");
+                Console.WriteLine($"CODIGO: {codigos[i]} | PRODUTO: {produtos[i]} | PREÇO: {precos[i]}");
             }
-            string? compra = null;
-
-            while (compra == null)
+            
+            char compra = 's';
+            while (compra == 's')
             {
-                Console.Write("ADD PRODUTO NO CARRINHO: ");
-                compra = Console.ReadLine();
+                Console.Write("ADD PRODUTO NO CARRINHO (DIGITE O CODIGO): ");
+                int id = int.Parse(Console.ReadLine());
 
-                int count = 0;
-                foreach (var produto in produtos)
+                for (int i = 0; i < produtos.Count; i++)
                 {
-                    if (compra != produto)
+                    if (id != codigos[i])
                     {
-                        count++;
                         continue;
                     }
-                    else if (qtdProdutos[count] == 0)
+                    else if (qtdProdutos[i] == 0)
                     {
-                        Console.WriteLine($"!!! PRODUTO: {produto} ESGOTADO !!!");
+                        Console.WriteLine($"!!! PRODUTO: {produtos[i]} ESGOTADO !!!");
                         Console.Write("ADD MAIS PRODUTOS NO CARRINHO: (S)SIM (N)NÃO");
-                        compra = Console.ReadLine();
-                        if (compra == "S")
-                            compra = null;
-                        else if (compra == "N")
-                            compra = "N";
-                        break;
+                        compra = char.Parse(Console.ReadLine().ToLower());
+                        if (compra == 's')
+                            ComprarProdutos(carrinho, codigos, produtos, precos, qtdProdutos);
+                        else if (compra == 'n')
+                            return carrinho;
                     }
-                    else if (compra == produto && qtdProdutos[count] > 0)
+                    else if (id == codigos[i] && qtdProdutos[i] > 0)
                     {
-                        carrinho = carrinho + precos[count];
-                        qtdProdutos[count] = qtdProdutos[count] - 1;
+                        carrinho = carrinho + precos[i];
+                        qtdProdutos[i] = qtdProdutos[i] - 1;
                         Console.Write("ADD MAIS PRODUTOS NO CARRINHO: (S)SIM (N)NÃO");
-                        compra = Console.ReadLine();
-                        if (compra == "S")
-                            compra = null;
-                        else if (compra == "N")
-                            compra = "N";
-                        break;
+                        compra = char.Parse(Console.ReadLine().ToLower());
+                        if (compra == 's')
+                            ComprarProdutos(carrinho, codigos, produtos, precos, qtdProdutos);
+                        else if (compra == 'n')
+                            return carrinho;
                     }
-                    else
-                        count++;
-                }
+                }             
             }
+            return carrinho;
         }
     }
 }

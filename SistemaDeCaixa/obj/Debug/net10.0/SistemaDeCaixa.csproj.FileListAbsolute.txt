@@ -2,3 +2,15 @@ C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0
 C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.AssemblyInfoInputs.cache
 C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.AssemblyInfo.cs
 C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.csproj.CoreCompileInputs.cache
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\bin\Debug\net10.0\SistemaDeCaixa.exe
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\bin\Debug\net10.0\SistemaDeCaixa.deps.json
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\bin\Debug\net10.0\SistemaDeCaixa.runtimeconfig.json
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\bin\Debug\net10.0\SistemaDeCaixa.dll
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\bin\Debug\net10.0\SistemaDeCaixa.pdb
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.sourcelink.json
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.dll
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\refint\SistemaDeCaixa.dll
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.pdb
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaDeCaixa.genruntimeconfig.cache
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\ref\SistemaDeCaixa.dll
+C:\Users\Juan\Documents\Projetos\SistemaDeCaixa\SistemaDeCaixa\obj\Debug\net10.0\SistemaD.0655539B.Up2Date
